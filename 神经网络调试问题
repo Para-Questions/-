@@ -1,0 +1,4 @@
+1.如果出现Nan问题的话，有可能是梯度剪枝函数出了问题，tf.clip_by_global_norm， 换成如下函数就可以了。
+for i, g in enumerate(grads):
+    if g is not None:
+       grads[i] = tf.clip_by_norm(g, 50000)# 阈值这里设为5
